@@ -3,12 +3,7 @@ import axios from "axios";
 import { TokenCardProps } from "./types";
 import { Link } from "react-router-dom";
 
-export const TokenCard = ({
-  contract,
-  createdAt,
-  name,
-  id,
-}: TokenCardProps) => {
+export const TokenCard = ({ contract, name, id }: TokenCardProps) => {
   const generateUrl = (contract: string) => {
     return `https://www.dextools.io/app/en/arbitrum/pair-explorer/${contract}`;
   };

@@ -1,0 +1,1 @@
+export const REFRESH_AMOUNT = 30000;

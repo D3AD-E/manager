@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { WalletCard } from "../../components/walletCard";
 import axios from "axios";
-import { PhraseModal } from "../../components/phraseInputModal";
-import { TokenModal } from "../../components/tokenModal";
+import { PhraseModal } from "../../components/modals/phraseInputModal";
+import { TokenModal } from "../../components/modals/tokenModal";
 import { Wallet } from "../../commontypes/wallet";
+import { toast } from "react-toastify";
 
 export const MainPage = () => {
   const [wallets, setWallets] = useState<Wallet[]>([]);
@@ -12,6 +13,7 @@ export const MainPage = () => {
 
   const createNew = () =>{
     axios.post("wallet/create/").then((response) => {
+      toast("Added a new wallet")
       refetch();
     });
   }
