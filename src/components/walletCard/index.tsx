@@ -25,7 +25,7 @@ export const WalletCard = ({
     }, SEC20);
 
     return () => clearInterval(interval); 
-  }, []);
+  });
 
   return (
     <div className="col-lg-3">

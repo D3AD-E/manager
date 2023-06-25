@@ -70,7 +70,7 @@ export const MainPage = () => {
         </div>
       </div>
       <PhraseModal show={showPhraseInput} setShow={setShowPhraseInput} handleSuccess={handlePhrase}/>
-      <TokenModal show={showTokenInput} setShow={setShowTokenInput} />
+      <TokenModal show={showTokenInput} setShow={setShowTokenInput} handleSuccess={handlePhrase}/>
     </div>
   );
 };

@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import { MainPage } from './pages/index/index';
+import Router from './components/router';
 
 function App() {
   return (
-    <MainPage/>
+    <Router/>
   );
 }
 
