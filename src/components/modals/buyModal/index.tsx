@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { GenericInputModalProps } from "./types";
+import { BuyModalProps } from "./types";
 
-export const GenericInputModal = ({
-  isOpen: show,
-  setIsOpen: setShow,
-  title,
-  label,
+export const BuyModal = ({
+  isOpen,
+  setIsOpen,
   onSubmit,
-}: GenericInputModalProps) => {
-  const [inputValue, setInputValue] = useState("");
+  currentBalance,
+}: BuyModalProps) => {
+  const [inputValue, setInputValue] = useState(0);
 
   const handleClose = () => {
-    setShow(false);
+    setIsOpen(false);
   };
 
   const handleInputChange = (e: any) => {
@@ -22,12 +21,12 @@ export const GenericInputModal = ({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     onSubmit(inputValue);
-    setShow(false);
+    setIsOpen(false);
   };
 
   return (
     <div>
-      {show && (
+      {isOpen && (
         <div
           className="modal"
           tabIndex={-1}
@@ -37,21 +36,24 @@ export const GenericInputModal = ({
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">{title}</h5>
+                <h5 className="modal-title">Buy</h5>
                 <button type="button" className="close" onClick={handleClose}>
                   <span>&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="pb-3">
                   <div className="form-group">
-                    <label htmlFor="inputField">{label}</label>
+                    <label htmlFor="inputField">Amount in ETH</label>
                     <input
                       autoComplete="off"
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="inputField"
+                      min={0}
+                      step="0.001"
                       value={inputValue}
+                      max={currentBalance}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -59,6 +61,15 @@ export const GenericInputModal = ({
                     Submit
                   </button>
                 </form>
+                <div className="">
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.005)}>0.005</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.01)}>0.01</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.02)}>0.02</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.03)}>0.03</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.05)}>0.05</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.1)}>0.1</button>
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(currentBalance)}>Max</button>
+                </div>
               </div>
             </div>
           </div>

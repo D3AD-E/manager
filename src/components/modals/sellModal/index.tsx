@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { GenericInputModalProps } from "./types";
+import { SellModalProps } from "./types";
 
-export const GenericInputModal = ({
-  isOpen: show,
-  setIsOpen: setShow,
-  title,
-  label,
+export const SellModal = ({
+  isOpen,
+  setIsOpen,
   onSubmit,
-}: GenericInputModalProps) => {
+  currentBalance,
+  tokenName
+}: SellModalProps) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClose = () => {
-    setShow(false);
+    setIsOpen(false);
   };
 
   const handleInputChange = (e: any) => {
@@ -22,12 +22,12 @@ export const GenericInputModal = ({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     onSubmit(inputValue);
-    setShow(false);
+    setIsOpen(false);
   };
 
   return (
     <div>
-      {show && (
+      {isOpen && (
         <div
           className="modal"
           tabIndex={-1}
@@ -37,21 +37,22 @@ export const GenericInputModal = ({
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">{title}</h5>
+                <h5 className="modal-title">Sell</h5>
                 <button type="button" className="close" onClick={handleClose}>
                   <span>&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="pb-3">
                   <div className="form-group">
-                    <label htmlFor="inputField">{label}</label>
+                    <label htmlFor="inputField">Amount in {tokenName}</label>
                     <input
                       autoComplete="off"
                       type="text"
                       className="form-control"
                       id="inputField"
                       value={inputValue}
+                      max={currentBalance}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -59,6 +60,9 @@ export const GenericInputModal = ({
                     Submit
                   </button>
                 </form>
+                <div className="">
+                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(currentBalance)}>Max</button>
+                </div>
               </div>
             </div>
           </div>

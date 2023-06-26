@@ -25,9 +25,7 @@ export const TokensPage = () => {
           {tokens?.map((token) => {
             return (
               <TokenCard
-                contract={token.contract}
-                name={token.name}
-                id={token.id}
+                {...token}
               />
             );
           })}

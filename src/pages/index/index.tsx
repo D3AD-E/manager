@@ -13,7 +13,7 @@ export const MainPage = () => {
 
   const createNew = () =>{
     axios.post("wallet/create/").then((response) => {
-      toast("Added a new wallet")
+      toast.success("Added a new wallet")
       refetch();
     });
   }
