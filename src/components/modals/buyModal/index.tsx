@@ -62,13 +62,48 @@ export const BuyModal = ({
                   </button>
                 </form>
                 <div className="">
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.005)}>0.005</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.01)}>0.01</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.02)}>0.02</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.03)}>0.03</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.05)}>0.05</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(0.1)}>0.1</button>
-                  <button className="btn btn-primary me-3" onClick={()=>setInputValue(currentBalance)}>Max</button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.005)}
+                  >
+                    0.005
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.01)}
+                  >
+                    0.01
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.02)}
+                  >
+                    0.02
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.03)}
+                  >
+                    0.03
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.05)}
+                  >
+                    0.05
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(0.1)}
+                  >
+                    0.1
+                  </button>
+                  <button
+                    className="btn btn-primary me-3"
+                    onClick={() => setInputValue(currentBalance)}
+                  >
+                    Max
+                  </button>
                 </div>
               </div>
             </div>

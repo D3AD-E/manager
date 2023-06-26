@@ -3,4 +3,6 @@ export type ActionWalletCardProps = {
   tokenId: number;
   address: string;
   tokenName: string;
+  tokenPriceInWeth?: number;
+  tokenPriceInUsdt?: number;
 };

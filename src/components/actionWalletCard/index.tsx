@@ -14,6 +14,8 @@ export const ActionWalletCard = ({
   address,
   tokenId,
   tokenName,
+  tokenPriceInWeth,
+  tokenPriceInUsdt
 }: ActionWalletCardProps) => {
   const [ethBalance, setEthBalance] = useState(0);
   const [tokenBalance, setTokenBalance] = useState<string>();
@@ -64,11 +66,26 @@ export const ActionWalletCard = ({
     // return () => clearInterval(interval);
   });
 
+  const getEth = (tokenBalance: number, tokenPriceInWeth?: number) =>{
+    console.log(tokenBalance, tokenPriceInWeth)
+    if(tokenPriceInWeth)
+      return tokenBalance * tokenPriceInWeth;
+    return 0;
+  }
+
+  const getUsdt = (tokenBalance: number, tokenPriceInUsdt?: number) =>{
+    if(tokenPriceInUsdt)
+      return tokenBalance * tokenPriceInUsdt;
+    return 0;
+  }
+
   return (
     <div className="col-lg-4">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{tokenBalance}</h5>
+          <h6 className="card-title">In ETH: {getEth(Number(tokenBalance), tokenPriceInWeth)}</h6>
+          <h6 className="card-title">In USDT: {getUsdt(Number(tokenBalance), tokenPriceInUsdt)}</h6>
           <p className="card-text">{address}</p>
           <p className="card-text">Left: {ethBalance} ETH</p>
           <button className="btn btn-secondary me-2" onClick={refreshBalance}>

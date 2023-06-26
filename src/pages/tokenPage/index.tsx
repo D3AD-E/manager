@@ -93,6 +93,8 @@ export const TokenPage = () => {
                 tokenId={Number(id)}
                 key={wallet.address}
                 tokenName={token?.name ?? ""}
+                tokenPriceInWeth={token?.weth}
+                tokenPriceInUsdt={token?.usdt}
               />
             );
           })}
