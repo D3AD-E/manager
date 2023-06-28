@@ -52,8 +52,9 @@ export const ActionWalletCard = ({
 
   const dump = () => {
     axios.post("wallet/sell/all", { walletId, tokenId }).then((response) => {
-      toast.success(`Dumped ${tokenName} successfully`);
-      refreshBalance();
+        playMoney();
+        toast.success(`Dumped ${tokenName} successfully`);
+        refreshBalance();
     });
   };
 

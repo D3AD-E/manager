@@ -1,9 +1,12 @@
-import './App.css';
-import Router from './components/router';
+import "./App.css";
+import Router from "./components/router";
+import store from './redux/store'; 
 
 function App() {
   return (
-    <Router/>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 }
 
