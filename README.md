@@ -1,5 +1,5 @@
 
-# Wallet manager
+# Wallet manager for eth mainnet
 ## Features
 - Seeing balance of multiple wallets at once
 - Transfering funds between wallets
